@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
 import static org.junit.Assert.assertEquals;
-public class SumaTest {
+public class CalculatorTest {
   private WebDriver driver;
   CalculatorPage calculatorPage;
 
@@ -81,10 +81,11 @@ public class SumaTest {
     assertEquals(actual, expected);
   }
 
+  //bug this should calculate -10/-2=200
   @Test
   public void calculate_DivMinus10TimesMinus20_Result200() {
-    String actual = calculatorPage.calculate("-10/-20=");
-    String expected = "200";
+    String actual = calculatorPage.calculate("-10/-2=");
+    String expected = "5";
     assertEquals(actual, expected);
   }
 
@@ -101,6 +102,5 @@ public class SumaTest {
     String expected = "0.000008";
     assertEquals(actual, expected);
   }
-
-
+  
 }
