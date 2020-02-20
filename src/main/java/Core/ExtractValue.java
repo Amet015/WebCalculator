@@ -24,6 +24,7 @@ public class ExtractValue {
         map.put('+',"/html/body/center/div/div[2]/span[4]");
         map.put('-',"/html/body/center/div/div[2]/span[8]");
         map.put('=',"/html/body/center/div/div[2]/span[15]");
+        map.put('c',"/html/body/center/div/div[1]/span");
     }
 
     public String getDigit(char numbers) {

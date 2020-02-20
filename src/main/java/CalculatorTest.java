@@ -2,11 +2,9 @@
 import Calculator.CalculatorPage;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
 
 import static org.junit.Assert.assertEquals;
 public class CalculatorTest {
-  private WebDriver driver;
   CalculatorPage calculatorPage;
 
   @Before
@@ -19,14 +17,14 @@ public class CalculatorTest {
   public void calculate_Div10Div2_Result5() {
     String actual = calculatorPage.calculate("10/2=");
     String expected = "5";
-    assertEquals(actual,expected);
+    assertEquals(expected, actual);
   }
 
   @Test
   public void calculate_Add5p2p20p100p1000_Result_1127() {
     String actual = calculatorPage.calculate("5+2+20+100+1000=");
     String expected = "1127";
-    assertEquals(actual,expected);
+    assertEquals(expected, actual);
   }
 
   @Test
@@ -40,37 +38,37 @@ public class CalculatorTest {
   public void calculate_Multi540times0_Result0() {
     String actual = calculatorPage.calculate("540*0=");
     String expected = "0";
-    assertEquals(actual,expected);
+    assertEquals(expected, actual);
 
   }
 
   //Bug this should be 52
   @Test
-  public void calculate_Multi5x2x05dot2_Result52() {
-    String actual = calculatorPage.calculate("5x2x05.2=");
+  public void calculate_Multi5x2x05dot2_Result52() throws InterruptedException {
+    String actual = calculatorPage.calculate("5*2*05.2=");
     String expected = "52";
-    assertEquals(actual,expected);
+    assertEquals(expected, actual);
   }
 
   @Test
   public void calculate_MultiAndDive64times2div32_Result4() {
     String actual = calculatorPage.calculate("64*2/32=");
     String expected = "4";
-    assertEquals(actual,expected);
+    assertEquals(expected, actual);
   }
 
   @Test
   public void calculate_Multi999999999p999999999_Result999999998000000000() {
     String actual = calculatorPage.calculate("999999999*999999999=");
     String expected = "999999998000000000";
-    assertEquals(actual,expected);
+    assertEquals(expected, actual);
   }
 
   @Test
   public void calculate_Subtract10minus100dot10_ResultNegative90dot1() {
     String actual = calculatorPage.calculate("10-100.10=");
     String expected = "-90.1";
-    assertEquals(actual,expected);
+    assertEquals(expected, actual);
   }
 
   //bug this should calculate -10*-20=200
@@ -78,7 +76,7 @@ public class CalculatorTest {
   public void calculate_MultiMinus10TimesMinus20_Result200() {
     String actual = calculatorPage.calculate("-10*-20=");
     String expected = "200";
-    assertEquals(actual, expected);
+    assertEquals(expected, actual);
   }
 
   //bug this should calculate -10/-2=200
@@ -86,21 +84,87 @@ public class CalculatorTest {
   public void calculate_DivMinus10TimesMinus20_Result200() {
     String actual = calculatorPage.calculate("-10/-2=");
     String expected = "5";
-    assertEquals(actual, expected);
+    assertEquals(expected, actual);
   }
 
   @Test
   public void calculate_MultiMinus10times20times2dot5_Result200() {
     String actual = calculatorPage.calculate("-10*20*2.5=");
     String expected = "-500";
-    assertEquals(actual, expected);
+    assertEquals(expected, actual);
   }
 
   @Test
   public void calculate_Multi0Dot000004Times2_Result0dot0000008() {
     String actual = calculatorPage.calculate("0.000004*2=");
     String expected = "0.000008";
+    assertEquals(expected, actual);
+
+  }
+
+  @Test
+  public void calculate_Add4555Plus555andClear_ResultEmpty() {
+    String actual = calculatorPage.calculate("4555+555=c");
+    String expected = "";
+    assertEquals(expected, actual);
+  }
+
+  @Test
+  public void calculate_Subtract4555Minus555andClear_ResultEmpty() {
+    String actual = calculatorPage.calculate("5555-1555=");
+    String expected = "4000";
+    assertEquals(expected, actual);
+  }
+
+  @Test
+  public void calculate_Subtract4dot5Minus555_ResultEmpty() {
+    String actual = calculatorPage.calculate("4.5-555=");
+    String expected = "-550.5";
     assertEquals(actual, expected);
   }
-  
+
+  //not shure that is bug
+  @Test
+  public void calculate_Subtract1254dot223Minus1235dot55631789_ResultEmpty() {
+    String actual = calculatorPage.calculate("1254.223-1235.55631789=");
+    String expected = "18.66668211";
+    assertEquals(expected, actual);
+  }
+
+
+  @Test
+  public void calculate_ClearAndSubtract554plus54ClearTimes123Minus23_() {
+    String actual = calculatorPage.calculate("554*54c*123-23=");
+    String expected = "100";
+    assertEquals(expected, actual);
+  }
+
+  @Test
+  public void calculate_Division48DivDot5_Result96() {
+    String actual = calculatorPage.calculate("48/.5=");
+    String expected = "96";
+    assertEquals(expected, actual);
+  }
+
+  @Test
+  public void calculate_Division48DivDot5Div2_Result48() {
+    String actual = calculatorPage.calculate("48/.5/2=");
+    String expected = "48";
+    assertEquals(expected, actual);
+  }
+
+  //how
+  @Test
+  public void calculate_Division987654div9dot2156_Result4() {
+    String actual = calculatorPage.calculate("987654/9.2156=");
+    String expected = "107171.969";
+    assertEquals(expected, actual);
+  }
+
+  @Test
+  public void calculate_DivisionDot000000098div1024_Result4() {
+    String actual = calculatorPage.calculate(".000000098/1024=");
+    String expected = "9.5703125e-11";
+    assertEquals(expected, actual);
+  }
 }
