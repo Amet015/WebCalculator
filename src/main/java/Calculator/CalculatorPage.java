@@ -19,11 +19,11 @@ public class CalculatorPage {
         return driver.findElement(SCREEN_BY).getText();
     }
 
-    public String calculate(String digitsCalulator) {
+    public String calculate(String digitsCalculator) {
         ExtractValue extractValue = new ExtractValue();
         driver.get(URL);
         driver.manage().window().setSize(new Dimension(1696, 1026));
-        for (char digit : digitsCalulator.toCharArray()) {
+        for (char digit : digitsCalculator.toCharArray()) {
             driver.findElement(By.xpath(extractValue.getDigit(digit))).click();
         }
         String result = getResult();
