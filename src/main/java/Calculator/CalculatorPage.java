@@ -1,6 +1,6 @@
 package Calculator;
 
-import Core.ExtractValue;
+import Core.ButtonValue;
 import Core.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -20,11 +20,11 @@ public class CalculatorPage {
     }
 
     public String calculate(String digitsCalculator) {
-        ExtractValue extractValue = new ExtractValue();
+        ButtonValue buttonValue = new ButtonValue();
         driver.get(URL);
         driver.manage().window().setSize(new Dimension(1696, 1026));
         for (char digit : digitsCalculator.toCharArray()) {
-            driver.findElement(By.xpath(extractValue.getDigit(digit))).click();
+            driver.findElement(By.xpath(buttonValue.getDigit(digit))).click();
         }
         String result = getResult();
         WebDriverManager.getInstance().quitWebDriver();

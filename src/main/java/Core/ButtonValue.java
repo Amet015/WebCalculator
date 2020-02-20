@@ -3,10 +3,10 @@ package Core;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ExtractValue {
+public class ButtonValue {
     private Map map;
 
-    public ExtractValue(){
+    public ButtonValue(){
         map = new HashMap();
         map.put('1',"/html/body/center/div/div[2]/span[9]");
         map.put('2', "/html/body/center/div/div[2]/span[10]");
